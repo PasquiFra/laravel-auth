@@ -18,7 +18,9 @@ class ProjectFactory extends Factory
     {
         return [
             'title' => fake()->sentence(3),
-            'date' => fake()->dateTime(),
+            'description' => fake()->sentence(30),
+            'project_url' => fake()->url(),
+            'is_published' => fake()->numberBetween(0, 1),
         ];
     }
 }

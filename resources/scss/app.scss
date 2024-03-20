@@ -1,1 +1,6 @@
-@import '~bootstrap/scss/bootstrap'
+@import './reset';
+@import './_utilities';
+@import './_home';
+@import './guest/index';
+
+@import '~bootstrap/scss/bootstrap';
