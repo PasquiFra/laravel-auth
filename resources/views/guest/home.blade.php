@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('main-content')
+@section('content')
 
 <h1 class="text-center m-3">Home page di Francesco Pasquinoni</h1>
 

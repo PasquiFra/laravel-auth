@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('main-content')
+@section('content')
 
 <h1>Admin Home</h1>
 

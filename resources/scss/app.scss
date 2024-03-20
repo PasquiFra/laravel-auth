@@ -1,6 +1,8 @@
 @import './reset';
 @import './_utilities';
 @import './_home';
-@import './guest/index';
+@import './components/_index';
+@import './components/_show';
+@import './components/_form';
 
 @import '~bootstrap/scss/bootstrap';

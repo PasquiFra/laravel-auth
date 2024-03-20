@@ -8,7 +8,7 @@
         </header>
 
         <main class="container">
-            @yield('main-content')
+            @yield('content')
         </main>
 
         @yield('scripts')

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('project_url')->required();
             $table->string('is_published')->required();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
