@@ -20,23 +20,32 @@
 
     </div>
 
+    @include('admin.form.result-feedback')
+
     <div  class="project">
         <div>
             Descrizione: 
-            <p> {{$project->description}} </p>
+            <strong><p> {{$project->description}} </p></strong> 
         </div>
         <ul>
             <li>
                 Vai a GitHub: <a href="{{$project->project_url}}" class="link">{{$project->project_url}}</a>
             </li>
             <li>
-                Stato: <span class="{{$project->is_published ? 'text-success' : 'text-warning'}}">{{$project->is_published ? 'Pubblicato' : 'Bozza'}}</span>
+                Slug: <strong>{{$project->slug}}</strong> 
             </li>
             <li>
-                Creato il: {{$project->created_at}}
+                Tags: <strong>{{$project->tags}}</strong> 
             </li>
             <li>
-                Ultima modifica: {{$project->updated_at}}
+                Stato: 
+                <strong><span class="{{$project->is_published ? 'text-success' : 'text-warning'}}">{{$project->is_published ? 'Pubblicato' : 'Bozza'}}</span></strong>
+            </li>
+            <li>
+                Creato il: <strong>{{$project->created_at}}</strong>
+            </li>
+            <li>
+                Ultima modifica: <strong>{{$project->updated_at}}</strong>
             </li>
         </ul>
     </div>  

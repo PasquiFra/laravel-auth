@@ -24,8 +24,11 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'title' => 'required|string|unique:projects',
+            'slug' => 'string',
             'description' => 'string|required',
             'project_url' => 'url:http,https|required',
+            'image_url' => 'url:http,https',
+            'tags' => 'string',
             'is_published' => 'string|required',
         ];
     }

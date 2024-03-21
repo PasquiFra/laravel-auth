@@ -8,6 +8,7 @@
     <h1>{{$project->title}}</h1>
     <div  class="project">
         <p class="text-center"> {{$project->description}} </p>
+        <span class="text-center">Slug: {{$project->slug}} </span>
         <div>
             Vai a GitHub:<a href="{{$project->project_url}}" class="link">{{$project->project_url}}</a>
         </div>

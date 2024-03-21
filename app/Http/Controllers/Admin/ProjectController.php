@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Requests\StoreProjectRequest;
+use Illuminate\Support\Str;
+
 
 class ProjectController extends Controller
 {
@@ -35,9 +37,13 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
 
+        dump($data);
+
         $new_project = new Project();
 
         $new_project->fill($data);
+
+        $new_project->slug = Str::slug($new_project->title);
 
         $new_project->save();
 
@@ -66,8 +72,9 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->validated();
-        dump($data);
+
         $project->update($data);
+
         return redirect()->route('admin.projects.show', $project)
             ->with('type', 'success')
             ->with('message', "$project->title modificato con successo.");
