@@ -12,7 +12,7 @@ class Project extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['title', 'description', 'project_url', 'is_published', 'image_url', 'tags'];
+    protected $fillable = ['title', 'description', 'project_url', 'is_published', 'tags'];
 
     public function getShortDescription($project)
     {

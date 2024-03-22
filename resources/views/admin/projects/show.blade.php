@@ -27,6 +27,9 @@
             Descrizione: 
             <strong><p> {{$project->description}} </p></strong> 
         </div>
+        <div class="" id="show-image">
+            <img src="{{ asset('storage/' . $project->image) }}" alt="{{$project->slug}}">
+        </div>
         <ul>
             <li>
                 Vai a GitHub: <a href="{{$project->project_url}}" class="link">{{$project->project_url}}</a>

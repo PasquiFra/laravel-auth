@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Project>
@@ -19,12 +20,21 @@ class ProjectFactory extends Factory
     {
         $title = fake()->sentence(3);
 
+        $img = fake()->image(null, 250, 250);
+
+        $slug = Str::slug($title);
+
+        Storage::makeDirectory('projects_images');
+
+        $img_url = Storage::putFileAs('projects_images', $img, "$slug.png");
+
+
         return [
             'title' => $title,
-            'slug' => Str::slug($title),
+            'slug' => $slug,
             'description' => fake()->sentence(30),
             'project_url' => fake()->url(),
-            'image_url' => fake()->imageUrl(250, 250),
+            'image' =>  $img_url,
             'tags' => fake()->word(),
             'is_published' => fake()->numberBetween(0, 1),
         ];

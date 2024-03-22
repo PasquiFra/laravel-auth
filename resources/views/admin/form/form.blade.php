@@ -8,10 +8,12 @@
     @include('admin.form.validation')
     
     @if ($project->exists)
-        <form action="{{route('admin.projects.update', $project->id  ) }}" method="post" class="flex container py-4 justify-content-center">
+        <form action="{{route('admin.projects.update', $project->id  ) }}" method="post" 
+            class="flex container py-4 justify-content-center" enctype="multipart/form-data">
         @method('put')
     @else
-        <form action="{{route('admin.projects.store')}}" method="post" class="flex container py-4 justify-content-center">
+        <form action="{{route('admin.projects.store')}}" method="post" 
+        class="flex container py-4 justify-content-center"  enctype="multipart/form-data">
     @endif
         
         @csrf
@@ -47,24 +49,33 @@
             {{old('description', $project->description)}}
         </textarea>
     </div>
+    
+    <div class="d-flex w-100 mb-3 load-image">
+        <div class="w-75">
+            <div class="input-group p-1 d-flex">
+                <label class="form-label label" for="image">Url Immagine</label>
+                <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @elseif(old('image')) is-valid @enderror">
+                @error('image')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>   
+                @else        
+                <div class="valid-feedback">
+                    Campo corretto
+                </div>      
+                @enderror       
+            </div>
+        </div>
 
-    <div class="input-group mb-3 w-50 p-1 d-flex">
-        <label class="form-label label" for="image_url">Url Immagine</label>
-        <input type="text" required id="image_url" name="image_url" class="form-control @error('image_url') is-invalid @elseif(old('image_url')) is-valid @enderror" 
-        value="{{old('image_url', $project->image_url)}}" 
-        placeholder="Inserisci url immagine...">
-        @error('image_url')
-        <div class="invalid-feedback">
-            {{$message}}
-        </div>   
-        @else        
-        <div class="valid-feedback">
-            Campo corretto
-        </div>      
-        @enderror       
+        <div class="" id="preview-section">
+            <img id="preview" src="{{ old('image', $project->image) 
+            ? asset('storage/' . old('image', $project->image)) 
+            : 'https://t4.ftcdn.net/jpg/05/17/53/57/360_F_517535712_q7f9QC9X6TQxWi6xYZZbMmw5cnLMr279.jpg'}}" 
+            alt="{{$project->slug}}">
+        </div>
     </div>
 
-    <div class="input-group mb-3 w-50 p-1 d-flex">
+    <div class="input-group mb-3 w-100 p-1 d-flex">
         <label class="form-label label" for="project_url">Url progetto</label>
         <input type="text" required id="project_url" name="project_url" class="form-control @error('project_url') is-invalid @elseif(old('project_url')) is-valid @enderror" 
         value="{{old('project_url', $project->project_url)}}" 
@@ -81,7 +92,7 @@
     </div>
 
     <div class="input-group mb-3 w-50 p-1 d-flex">
-        <label class="form-label label" for="title">Tags</label>
+        <label class="form-label label" for="tags">Tags</label>
         <input type="text" required id="tags" name="tags" class="form-control @error('tags') is-invalid @elseif(old('tags')) is-valid @enderror" 
         value="{{old('tags', $project->tags)}}" 
         placeholder="Inserisci i linguaggi e/o i framework utilizzati...">
@@ -123,3 +134,4 @@
 </section>
 
 @include('scripts.slug')
+@include('scripts.preview-image')

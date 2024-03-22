@@ -10,7 +10,7 @@
         return slugTitle
     }
     
-    document.getElementById('title').addEventListener('keyup', function() {
+    document.getElementById('title').addEventListener('update', function() {
         
         document.getElementById('slug').value = getSlugTitle();
     });

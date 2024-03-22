@@ -13,6 +13,7 @@
     .project {
         padding: 25px 10px;
         border-bottom: 1px solid goldenrod;
+        position: relative;
 
         ul {
             margin: 0;
@@ -25,6 +26,23 @@
                     text-decoration: underline;
                     color: goldenrod;
                 }
+            }
+        }
+
+        #show-image {
+            position: absolute;
+            right: 0%;
+            top: 40%;
+
+            width: 250px;
+            height: 250px;
+
+            border: 1px solid black;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: auto;
             }
         }
 

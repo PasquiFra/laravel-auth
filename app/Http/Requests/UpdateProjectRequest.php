@@ -29,7 +29,7 @@ class UpdateProjectRequest extends FormRequest
             'slug' => 'string',
             'description' => 'string|required',
             'project_url' => 'url:http,https|required',
-            'image_url' => 'url:http,https',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg',
             'tags' => 'string',
             'is_published' => 'string|required',
         ];
@@ -40,6 +40,7 @@ class UpdateProjectRequest extends FormRequest
             'title.required' => 'Il campo titolo è obbligatorio',
             'description.required' => 'Il campo decsrizione è obbligatorio',
             'project_url.required' => 'Il campo url progetto è obbligatorio',
+            'image.image' => 'il file inserito non è un\'immagine',
         ];
     }
 }
