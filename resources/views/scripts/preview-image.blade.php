@@ -14,7 +14,7 @@
             const file = imageField.files[0];
 
             //preparo l'url
-            const bloburl = URL.createObjectURL(file);
+            const blobUrl = URL.createObjectURL(file);
 
             previewField.src = blobUrl;
         }
